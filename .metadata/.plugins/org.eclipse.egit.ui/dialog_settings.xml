@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<item value="0" key="org.eclipse.egit.ui.internal.clone.GitSelectWizardPageWizardSel"/>
+	<item value="true" key="CommitDialog.showUntracked"/>
+	<list key="CommitDialog.authorValues">
+		<item value="gaspar.oliveira &lt;gasparoliveira@10.37.129.2&gt;"/>
+	</list>
+	<list key="CommitDialog.committerValues">
+		<item value="gaspar.oliveira &lt;gasparoliveira@10.37.129.2&gt;"/>
+	</list>
+	<list key="RepositorySelectionPage.UsedUris">
+		<item value="file:////Users/gasparoliveira/Dropbox/ProjectoAplicacoesMoveis_STCP/SVN/CityTransporter_Android/stcp"/>
+	</list>
+	<section name="GitCommitMessageComponent">
+	</section>
+	<section name="org.eclipse.egit.ui.internal.push.PushResultDialog.dialogBounds">
+		<item value="650" key="DIALOG_WIDTH"/>
+		<item value="76" key="DIALOG_Y_ORIGIN"/>
+		<item value="440" key="DIALOG_HEIGHT"/>
+		<item value="315" key="DIALOG_X_ORIGIN"/>
+		<item value="1|Lucida Grande|11.0|0|COCOA|1|LucidaGrande" key="DIALOG_FONT_NAME"/>
+	</section>
+</section>
