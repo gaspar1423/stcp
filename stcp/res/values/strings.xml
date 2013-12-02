@@ -1,8 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">stcp</string>
+    <string name="app_name">STCP</string>
     <string name="action_settings">Settings</string>
-    <string name="hello_world">Hello world!</string>
+    <string name="username">Username</string>
+    <string name="pass">Password</string>
+    <string name="login">Login</string>
+    <string name="experimentar">Experimentar</string>
+    <string name="login_progress_signing_in">Conectando&#8230;</string>
+    
+    <string-array name="menu">
+        <item name="percurso">Percurso</item>
+        <item name="pertodemim">Perto de Mim</item>
+        <item name="historico">Historico</item>
+        <item name="definicoes">Definições</item>
+        <item name="ajuda">Ajuda</item>
+    </string-array>
+    
+    <string-array name="menuTitles">
+       <item name="percurso">Percurso</item>
+        <item name="pertodemim">Perto de Mim</item>
+        <item name="historico">Historico</item>
+        <item name="definicoes">Definições</item>
+        <item name="ajuda">Ajuda</item>
+    </string-array>
+    
+    <string name="drawer_open">Open navigation drawer</string>
+    <string name="drawer_close">Close navigation drawer</string>
+    <string name="action_search">Search</string>
+    <string name="app_not_available">Sorry, there\'s no web browser available</string>
 
 </resources>
