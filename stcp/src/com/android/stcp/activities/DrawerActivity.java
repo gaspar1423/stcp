@@ -38,7 +38,7 @@ public class DrawerActivity extends ActionBarActivity {
 		setContentView(R.layout.activity_drawer);
 
 		mTitle = mDrawerTitle = getTitle();
-		mMenuTitles = getResources().getStringArray(R.array.menuTitles);
+		mMenuTitles = getResources().getStringArray(R.array.menu);
 		mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 		mDrawerList = (ListView) findViewById(R.id.left_drawer);
 
@@ -143,12 +143,12 @@ public class DrawerActivity extends ActionBarActivity {
 
 		switch (position) {
 		case 0:
-			fragment = new PercursoFragment();
+			fragment = new MapaFragment();
 			fragmentManager.beginTransaction()
 					.replace(R.id.content_frame, fragment).commit();
 			break;
 		case 1:
-			fragment = new MapaFragment();
+			fragment = new PercursoFragment();
 			fragmentManager.beginTransaction()
 					.replace(R.id.content_frame, fragment).commit();
 			break;
