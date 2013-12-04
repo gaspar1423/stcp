@@ -1,1 +1,4 @@
 .metadata/*
+
+stcp/bin/*
+stcp/gen/*
