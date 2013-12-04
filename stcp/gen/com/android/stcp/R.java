@@ -938,12 +938,12 @@ containing a value of this type.
         public static final int abc_split_action_bar_is_narrow=0x7f060002;
     }
     public static final class color {
-        public static final int abc_search_url_text_holo=0x7f07000f;
+        public static final int abc_search_url_text_holo=0x7f070010;
         public static final int abc_search_url_text_normal=0x7f070000;
         public static final int abc_search_url_text_pressed=0x7f070002;
         public static final int abc_search_url_text_selected=0x7f070001;
-        public static final int application_color1=0x7f07000d;
-        public static final int application_color2=0x7f07000e;
+        public static final int btn_color_orange1=0x7f07000d;
+        public static final int btn_color_orange2=0x7f07000e;
         public static final int common_action_bar_splitter=0x7f07000c;
         /**  Sign-in Button Colors 
          */
@@ -956,8 +956,9 @@ containing a value of this type.
         public static final int common_signin_btn_light_text_disabled=0x7f070009;
         public static final int common_signin_btn_light_text_focused=0x7f07000a;
         public static final int common_signin_btn_light_text_pressed=0x7f070008;
-        public static final int common_signin_btn_text_dark=0x7f070010;
-        public static final int common_signin_btn_text_light=0x7f070011;
+        public static final int common_signin_btn_text_dark=0x7f070011;
+        public static final int common_signin_btn_text_light=0x7f070012;
+        public static final int stcp_blue=0x7f07000f;
     }
     public static final class dimen {
         /**  Default height of an action bar. 
@@ -1499,6 +1500,8 @@ containing a value of this type.
          */
         public static final int AppTheme=0x7f0b0084;
         public static final int LoginFormContainer=0x7f0b0085;
+        public static final int MyActionBar=0x7f0b0087;
+        public static final int MyTheme=0x7f0b0086;
         /**  Mimic text appearance in select_dialog_item.xml 
          */
         public static final int TextAppearance_AppCompat_Base_CompactMenu_Dialog=0x7f0b0063;
