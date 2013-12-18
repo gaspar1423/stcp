@@ -15,9 +15,21 @@ public class Route {
 	private int length;
 	private String polyline;
 
+	private static final class SingletonHolder {
+		public static final Route instance = new Route();
+	}
+
+	public static Route getInstance() {
+		return SingletonHolder.instance;
+	}
+
 	public Route() {
 		points = new ArrayList<LatLng>();
 		segments = new ArrayList<Segment>();
+	}
+
+	public List<LatLng> getListPoints() {
+		return points;
 	}
 
 	public void addPoint(final LatLng p) {

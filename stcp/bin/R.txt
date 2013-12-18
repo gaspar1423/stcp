@@ -133,7 +133,7 @@ int bool abc_config_actionMenuItemAllCaps 0x7f060005
 int bool abc_config_allowActionMenuItemTextWithIcon 0x7f060004
 int bool abc_config_showMenuShortcutsWhenKeyboardPresent 0x7f060003
 int bool abc_split_action_bar_is_narrow 0x7f060002
-int color abc_search_url_text_holo 0x7f070010
+int color abc_search_url_text_holo 0x7f070011
 int color abc_search_url_text_normal 0x7f070000
 int color abc_search_url_text_pressed 0x7f070002
 int color abc_search_url_text_selected 0x7f070001
@@ -149,9 +149,10 @@ int color common_signin_btn_light_text_default 0x7f070007
 int color common_signin_btn_light_text_disabled 0x7f070009
 int color common_signin_btn_light_text_focused 0x7f07000a
 int color common_signin_btn_light_text_pressed 0x7f070008
-int color common_signin_btn_text_dark 0x7f070011
-int color common_signin_btn_text_light 0x7f070012
+int color common_signin_btn_text_dark 0x7f070012
+int color common_signin_btn_text_light 0x7f070013
 int color stcp_blue 0x7f07000f
+int color stcp_orange 0x7f070010
 int dimen abc_action_bar_default_height 0x7f080002
 int dimen abc_action_bar_icon_vertical_padding 0x7f080003
 int dimen abc_action_bar_progress_bar_size 0x7f08000a

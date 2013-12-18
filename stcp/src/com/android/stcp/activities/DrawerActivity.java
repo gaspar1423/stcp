@@ -20,6 +20,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.android.stcp.R;
+import com.android.stcp.fragments.LinhasFragment;
 import com.android.stcp.fragments.MapaFragment;
 import com.android.stcp.fragments.PercursoFragment;
 
@@ -153,7 +154,7 @@ public class DrawerActivity extends ActionBarActivity {
 					.replace(R.id.content_frame, fragment).commit();
 			break;
 		case 2:
-			fragment = new MapaFragment();
+			fragment = new LinhasFragment();
 			fragmentManager.beginTransaction()
 					.replace(R.id.content_frame, fragment).commit();
 			break;

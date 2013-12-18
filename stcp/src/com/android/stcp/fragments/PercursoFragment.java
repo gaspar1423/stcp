@@ -1,11 +1,11 @@
 package com.android.stcp.fragments;
 
-import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.List;
 
 import android.graphics.Color;
 import android.location.Location;
 
+import com.android.stcp.map.Route;
 import com.android.stcp.map.Routing;
 import com.android.stcp.map.RoutingListener;
 import com.google.android.gms.maps.CameraUpdate;
@@ -25,8 +25,7 @@ public class PercursoFragment extends AbstractMapFragment implements
 	protected LatLng dois = new LatLng(41.172678, -8.611073);
 	protected LatLng tres = new LatLng(41.158915, -8.630712);
 	protected LatLng quatro = new LatLng(41.158915, -8.62176);
-	public ArrayList<LatLng> stops = new ArrayList<LatLng>(Arrays.asList(um,
-			dois, tres, quatro));
+	public List<LatLng> stops = Route.getInstance().getListPoints();
 
 	@Override
 	public void onMapReady() {
@@ -95,7 +94,7 @@ public class PercursoFragment extends AbstractMapFragment implements
 
 	}
 
-	public void insertMarkers(ArrayList<LatLng> stops) {
+	public void insertMarkers(List<LatLng> stops) {
 
 		MarkerOptions options = new MarkerOptions();
 		options.position(stops.get(0));

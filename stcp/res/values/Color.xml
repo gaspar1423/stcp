@@ -2,5 +2,6 @@
 <resources>
     <color name="btn_color_orange1">#F0B573</color>
     <color name="btn_color_orange2">#F77C12</color>
-    <color name="stcp_blue">#003c87</color>
+    <color name="stcp_blue">#003C87</color>
+    <color name="stcp_orange">#E97F01</color>
 </resources>
