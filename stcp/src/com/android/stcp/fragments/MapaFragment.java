@@ -9,14 +9,19 @@ import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 
+import com.android.stcp.R;
 import com.android.stcp.map.Route;
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap.OnInfoWindowClickListener;
 import com.google.android.gms.maps.GoogleMap.OnMapLongClickListener;
 import com.google.android.gms.maps.GoogleMap.OnMyLocationChangeListener;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 public class MapaFragment extends AbstractMapFragment {
@@ -92,6 +97,19 @@ public class MapaFragment extends AbstractMapFragment {
 						.icon(BitmapDescriptorFactory
 								.defaultMarker(BitmapDescriptorFactory.HUE_RED)));
 				Route.getInstance().addPoint(point);
+
+			}
+		});
+
+		googleMap.setOnInfoWindowClickListener(new OnInfoWindowClickListener() {
+
+			@Override
+			public void onInfoWindowClick(Marker arg0) {
+				Fragment fragment = null;
+				FragmentManager fragmentManager = getFragmentManager();
+				fragment = new PercursoFragment();
+				fragmentManager.beginTransaction()
+						.replace(R.id.content_frame, fragment).commit();
 
 			}
 		});

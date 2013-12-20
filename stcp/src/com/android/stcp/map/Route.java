@@ -36,6 +36,10 @@ public class Route {
 		points.add(p);
 	}
 
+	public void clearPoints() {
+		points.clear();
+	}
+
 	public void addPoints(final List<LatLng> points) {
 		this.points.addAll(points);
 	}
