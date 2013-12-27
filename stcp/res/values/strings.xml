@@ -8,11 +8,12 @@
     <string name="login">Login</string>
     <string name="experimentar">Experimentar</string>
     <string name="login_progress_signing_in">Conectando&#8230;</string>
+    <string name="limpar">Limpar dados</string>
     
     <string-array name="menu">
         <item name="geral">Vista Geral</item>
         <item name="percurso">Percurso</item>
-        <item name="pertodemim">Perto de Mim</item>
+        <item name="linhas">Linhas</item>
         <item name="historico">Historico</item>
         <item name="definicoes">Definições</item>
         <item name="ajuda">Ajuda</item>

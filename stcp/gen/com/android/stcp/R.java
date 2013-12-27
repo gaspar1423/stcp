@@ -1175,7 +1175,8 @@ containing a value of this type.
         public static final int ic_plusone_standard_off_client=0x7f020076;
         public static final int ic_plusone_tall_off_client=0x7f020077;
         public static final int logo_topo=0x7f020078;
-        public static final int splashscreen=0x7f020079;
+        public static final int marker_paragem=0x7f020079;
+        public static final int splashscreen=0x7f02007a;
     }
     public static final class id {
         public static final int action_bar=0x7f05001f;
@@ -1189,8 +1190,8 @@ containing a value of this type.
         public static final int action_menu_divider=0x7f050016;
         public static final int action_menu_presenter=0x7f050017;
         public static final int action_mode_close_button=0x7f050027;
-        public static final int action_search=0x7f050052;
-        public static final int action_settings=0x7f050053;
+        public static final int action_search=0x7f050053;
+        public static final int action_settings=0x7f050054;
         public static final int activity_chooser_view_content=0x7f050028;
         public static final int always=0x7f05000b;
         public static final int background=0x7f05004e;
@@ -1218,6 +1219,7 @@ containing a value of this type.
         public static final int image=0x7f05002a;
         public static final int imageView1=0x7f050043;
         public static final int left_drawer=0x7f050042;
+        public static final int limparPontos=0x7f050052;
         public static final int listMode=0x7f050001;
         public static final int list_item=0x7f05002c;
         public static final int login=0x7f05004a;
@@ -1366,10 +1368,10 @@ containing a value of this type.
         /**  Description of a share target (both in the list of such or the default share button) in a ShareActionProvider (share UI). [CHAR LIMIT=NONE] 
          */
         public static final int abc_shareactionprovider_share_with_application=0x7f0a000b;
-        public static final int action_search=0x7f0a0030;
+        public static final int action_search=0x7f0a0031;
         public static final int action_settings=0x7f0a0028;
         public static final int app_name=0x7f0a0027;
-        public static final int app_not_available=0x7f0a0031;
+        public static final int app_not_available=0x7f0a0032;
         /**   Title for notification shown when GooglePlayServices needs to be
         enabled for a application to work. [CHAR LIMIT=70] 
          */
@@ -1464,9 +1466,10 @@ containing a value of this type.
         /**  Long form sign-in button text [CHAR LIMIT=30] 
          */
         public static final int common_signin_button_text_long=0x7f0a0020;
-        public static final int drawer_close=0x7f0a002f;
-        public static final int drawer_open=0x7f0a002e;
+        public static final int drawer_close=0x7f0a0030;
+        public static final int drawer_open=0x7f0a002f;
         public static final int experimentar=0x7f0a002c;
+        public static final int limpar=0x7f0a002e;
         public static final int login=0x7f0a002b;
         public static final int login_progress_signing_in=0x7f0a002d;
         public static final int pass=0x7f0a002a;

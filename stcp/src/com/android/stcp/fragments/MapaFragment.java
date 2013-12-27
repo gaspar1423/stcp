@@ -87,7 +87,6 @@ public class MapaFragment extends AbstractMapFragment {
 					locationAddress = myList.get(0).getAddressLine(0)
 							.toString();
 				} catch (IOException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 

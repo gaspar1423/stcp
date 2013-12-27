@@ -4,7 +4,11 @@ import java.util.List;
 
 import android.graphics.Color;
 import android.location.Location;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
 
+import com.android.stcp.R;
 import com.android.stcp.map.Route;
 import com.android.stcp.map.Routing;
 import com.android.stcp.map.RoutingListener;
@@ -21,25 +25,34 @@ public class PercursoFragment extends AbstractMapFragment implements
 		RoutingListener {
 
 	private Location myLocation;
-	protected LatLng um = new LatLng(41.175311, -8.558019);
-	protected LatLng dois = new LatLng(41.172678, -8.611073);
-	protected LatLng tres = new LatLng(41.158915, -8.630712);
-	protected LatLng quatro = new LatLng(41.158915, -8.62176);
 	public List<LatLng> stops = Route.getInstance().getListPoints();
 
 	@Override
 	public void onMapReady() {
 		super.onMapReady();
 
-		for (int i = 0; i < stops.size() - 1; i++) {
-			Routing routing = new Routing(Routing.TravelMode.DRIVING);
-			routing.registerListener(this);
-			routing.execute(stops.get(i), stops.get(i + 1));
-		}
-		insertMarkers(stops);
+		Button bLimpar = (Button) getActivity().findViewById(R.id.limparPontos);
+		bLimpar.setVisibility(View.VISIBLE);
+		bLimpar.setOnClickListener(new OnClickListener() {
 
-		for (int i = 0; i < stops.size(); i++) {
-			latLngBoundsBuilder.include(stops.get(i));
+			@Override
+			public void onClick(View v) {
+				Route.getInstance().clearPoints();
+			}
+		});
+
+		if (stops != null) {
+			for (int i = 0; i < stops.size() - 1; i++) {
+				Routing routing = new Routing(Routing.TravelMode.DRIVING);
+				routing.registerListener(this);
+				routing.execute(stops.get(i), stops.get(i + 1));
+			}
+			insertMarkers(stops);
+
+			for (int i = 0; i < stops.size(); i++) {
+				latLngBoundsBuilder.include(stops.get(i));
+			}
+
 		}
 
 		googleMap.setMyLocationEnabled(true);
@@ -88,7 +101,7 @@ public class PercursoFragment extends AbstractMapFragment implements
 	public void onRoutingSuccess(PolylineOptions mPolyOptions) {
 		PolylineOptions polyoptions = new PolylineOptions();
 		polyoptions.color(Color.BLUE);
-		polyoptions.width(10);
+		polyoptions.width(5);
 		polyoptions.addAll(mPolyOptions.getPoints());
 		googleMap.addPolyline(polyoptions);
 

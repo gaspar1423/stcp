@@ -1,5 +1,6 @@
 package com.android.stcp.modelobjects;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.google.gson.JsonArray;
@@ -35,7 +36,6 @@ public class Paragem {
 		boolean status = false;
 		float latitude = 0;
 		float longitude = 0;
-		List<Linha> lista = null;
 
 		if (json.get("paragem_id") != null
 				&& json.get("paragem_id") != JsonNull.INSTANCE) {
@@ -65,6 +65,7 @@ public class Paragem {
 			longitude = json.get("longitude").getAsFloat();
 		}
 
+		List<Linha> lista = new ArrayList<Linha>();
 		JsonArray jarray = json.getAsJsonArray("linhas");
 		if (jarray != null) {
 			for (int i = 0; i < jarray.size(); i++) {
