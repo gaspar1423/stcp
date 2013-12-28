@@ -137,7 +137,7 @@ public class DrawerActivity extends ActionBarActivity {
 		}
 	}
 
-	private void selectItem(int position) {
+	public void selectItem(int position) {
 		// update the main content by replacing fragments
 		Fragment fragment = null;
 		FragmentManager fragmentManager = getSupportFragmentManager();

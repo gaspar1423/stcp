@@ -38,6 +38,10 @@ public class PercursoFragment extends AbstractMapFragment implements
 			@Override
 			public void onClick(View v) {
 				Route.getInstance().clearPoints();
+
+				LatLng latLng = new LatLng(myLocation.getLatitude(), myLocation
+						.getLongitude());
+				Route.getInstance().addPoint(latLng);
 			}
 		});
 
@@ -112,21 +116,22 @@ public class PercursoFragment extends AbstractMapFragment implements
 		MarkerOptions options = new MarkerOptions();
 		options.position(stops.get(0));
 		options.icon(BitmapDescriptorFactory
-				.defaultMarker(BitmapDescriptorFactory.HUE_GREEN));
+				.fromResource(R.drawable.marker_paragem));
 		googleMap.addMarker(options);
 
 		options = new MarkerOptions();
 		options.position(stops.get(stops.size() - 1));
 		options.icon(BitmapDescriptorFactory
-				.defaultMarker(BitmapDescriptorFactory.HUE_RED));
+				.fromResource(R.drawable.marker_paragem));
 		googleMap.addMarker(options);
 
 		for (int i = 1; i < stops.size() - 1; i++) {
 			options = new MarkerOptions();
 			options.position(stops.get(i));
 			options.icon(BitmapDescriptorFactory
-					.defaultMarker(BitmapDescriptorFactory.HUE_ROSE));
+					.fromResource(R.drawable.marker_paragem));
 			googleMap.addMarker(options);
 		}
 	}
+
 }

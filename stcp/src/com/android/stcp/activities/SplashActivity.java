@@ -95,7 +95,6 @@ public class SplashActivity extends Activity {
 				errorFragment.show(getFragmentManager(), TAG);
 
 			} else {
-				// TODO: custom popup if can't resolve issue
 				finish();
 			}
 			return false;

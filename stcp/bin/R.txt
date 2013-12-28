@@ -294,7 +294,8 @@ int drawable ic_plusone_standard_off_client 0x7f020076
 int drawable ic_plusone_tall_off_client 0x7f020077
 int drawable logo_topo 0x7f020078
 int drawable marker_paragem 0x7f020079
-int drawable splashscreen 0x7f02007a
+int drawable marker_paragem_pequeno 0x7f02007a
+int drawable splashscreen 0x7f02007b
 int id action_bar 0x7f05001f
 int id action_bar_activity_content 0x7f050015
 int id action_bar_container 0x7f05001e
