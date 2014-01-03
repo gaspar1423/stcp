@@ -9,7 +9,13 @@
     <string name="experimentar">Experimentar</string>
     <string name="login_progress_signing_in">Conectando&#8230;</string>
     <string name="limpar">Limpar dados</string>
-    
+
+    <!-- URLs -->
+    <string name="server_url"></string>
+    <string name="login_path">https://dl.dropboxusercontent.com/u/14038761/stcp/login.json</string>
+    <string name="linhas_path">https://dl.dropboxusercontent.com/u/14038761/stcp/linhas.json</string>
+    <string name="error_login_path">https://dl.dropboxusercontent.com/u/14038761/stcp/errorLogin.json</string>
+
     <string-array name="menu">
         <item name="geral">Vista Geral</item>
         <item name="percurso">Percurso</item>
@@ -18,10 +24,30 @@
         <item name="definicoes">Definições</item>
         <item name="ajuda">Ajuda</item>
     </string-array>
-    
+
     <string name="drawer_open">Open navigation drawer</string>
     <string name="drawer_close">Close navigation drawer</string>
     <string name="action_search">Search</string>
     <string name="app_not_available">Sorry, there\'s no web browser available</string>
+    <string name="destinationTitle">Usar ponto como:</string>
+    <string name="origem">Origem</string>
+    <string name="destino">Destino</string>
+
+    <!-- Errors -->
+    <string name="system_error">Serviço não disponível.</string>
+    <string name="wrong_credentials">Login ou password inválidos</string>
+    <string name="error_incorrect_password">Password incorrecta</string>
+    <string name="error_no_connection">Erro de ligação com o servidor</string>
+    <string name="error_timeout">Não foi possível contactar o serviço.</string>
+    <string name="error_authentication">Erro de autenticação</string>
+    <string name="error_server">Erro no servidor</string>
+    <string name="error_gcm">Erro ao registar no serviço GCM</string>
+    <string name="error_google_play_services">Erro no GooglePlay Services</string>
+    <string name="error_parsing_json">Erro no parsing do JsonOBject</string>
+    <string name="error_unknown">Erro desconhecido</string>
+    <string name="error_session">Erro de sessão. Por favor volte a iniciar a sessão</string>
+    <string name="error_location">Não foi possível obter a sua localização. Por favor verifique os seus serviços de localização e volte a tentar.</string>
+    <string name="error_location_services">Os serviços de localização estão desligados. Deseja ativá-los?</string>
+    <string name="mapUnavaiable">Não foi possivel carregar o mapa. Reinicie a aplicação!</string>
 
 </resources>

@@ -3,20 +3,32 @@ package com.android.stcp.activities;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.stcp.R;
+import com.android.stcp.StcpApp;
+import com.android.volley.Request.Method;
+import com.android.volley.Response.ErrorListener;
+import com.android.volley.Response.Listener;
+import com.android.volley.VolleyError;
+import com.google.gson.JsonObject;
+import com.stcp.volley.RequestManager;
+import com.stcp.volley.StcpJsonObjectRequest;
 
-public class LoginActivity extends Activity {
+public class LoginActivity extends ActionBarActivity {
+
+	private static final String TAG = LoginActivity.class.getSimpleName();
 
 	private EditText userEditText;
 	private EditText passEditText;
@@ -96,9 +108,17 @@ public class LoginActivity extends Activity {
 		if (cancel) {
 			focusView.requestFocus();
 		} else {
-			loginStatusMessageView.setText(R.string.login_progress_signing_in);
-			showProgress(true);
-			fakeLogin();
+			if (password.equals("1234") && username.equals("ufp")) {
+				loginStatusMessageView
+						.setText(R.string.login_progress_signing_in);
+				showProgress(true);
+				doRequestLogin(username, password, false);
+			} else {
+				loginStatusMessageView
+						.setText(R.string.login_progress_signing_in);
+				showProgress(true);
+				doRequestLogin(username, password, true);
+			}
 		}
 	}
 
@@ -107,6 +127,61 @@ public class LoginActivity extends Activity {
 		Intent i = new Intent(LoginActivity.this, DrawerActivity.class);
 		LoginActivity.this.startActivity(i);
 		finish();
+	}
+
+	private void doRequestLogin(final String username, final String password,
+			boolean fakeError) {
+
+		String path = "";
+		if (fakeError) {
+			path = getString(R.string.error_login_path);
+		} else {
+			path = getString(R.string.login_path);
+		}
+
+		StcpJsonObjectRequest request = RequestManager.createJsonObjectRequest(
+				Method.POST, path, null, new Listener<JsonObject>() {
+
+					@Override
+					public void onResponse(JsonObject response) {
+						Log.i(TAG, response.toString());
+						try {
+							int code = response.get("code").getAsInt();
+							if (code == 0) {
+								fakeLogin();
+							} else {
+								String descricao = response.get("descricao")
+										.getAsString();
+								Toast t = Toast.makeText(
+										StcpApp.getAppContext(), descricao,
+										Toast.LENGTH_LONG);
+								t.show();
+								showProgress(false);
+							}
+						} catch (Exception e) {
+							Log.e(TAG, "Exception", e);
+						}
+
+					}
+
+				}, new ErrorListener() {
+
+					@Override
+					public void onErrorResponse(VolleyError error) {
+						Toast t = Toast.makeText(StcpApp.getAppContext(),
+								R.string.error_no_connection, Toast.LENGTH_LONG);
+						t.show();
+						showProgress(false);
+						Log.e(TAG, "volley error Request:"
+								+ error.getClass().getName(), null);
+					}
+
+				});
+
+		request.addParam("username", username);
+		request.addParam("password", password);
+
+		RequestManager.addToRequestQueue(request, TAG);
 	}
 
 	@TargetApi(Build.VERSION_CODES.HONEYCOMB_MR2)

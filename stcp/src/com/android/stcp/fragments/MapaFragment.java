@@ -11,9 +11,12 @@ import android.location.Location;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.view.View;
+import android.view.View.OnClickListener;
 
 import com.android.stcp.R;
 import com.android.stcp.map.Route;
+import com.android.stcp.popup.OrigemDestinoDialog;
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap.OnInfoWindowClickListener;
@@ -95,7 +98,6 @@ public class MapaFragment extends AbstractMapFragment {
 						.title(locationAddress)
 						.icon(BitmapDescriptorFactory
 								.defaultMarker(BitmapDescriptorFactory.HUE_RED)));
-				Route.getInstance().addPoint(point);
 
 			}
 		});
@@ -103,13 +105,41 @@ public class MapaFragment extends AbstractMapFragment {
 		googleMap.setOnInfoWindowClickListener(new OnInfoWindowClickListener() {
 
 			@Override
-			public void onInfoWindowClick(Marker arg0) {
-				Fragment fragment = null;
-				FragmentManager fragmentManager = getFragmentManager();
-				fragment = new PercursoFragment();
-				fragmentManager.beginTransaction()
-						.replace(R.id.content_frame, fragment).commit();
+			public void onInfoWindowClick(final Marker marker) {
+				final OrigemDestinoDialog mDialog = new OrigemDestinoDialog();
 
+				mDialog.setButtons(new OnClickListener() {
+
+					@Override
+					public void onClick(View v) {
+						LatLng origem = marker.getPosition();
+
+						Route.getInstance().addPoint(origem);
+						Fragment fragment = null;
+						FragmentManager fragmentManager = getFragmentManager();
+						fragment = new PercursoFragment();
+						fragmentManager.beginTransaction()
+								.replace(R.id.content_frame, fragment).commit();
+						mDialog.dismiss();
+					}
+
+				}, new OnClickListener() {
+
+					@Override
+					public void onClick(View v) {
+						LatLng destino = marker.getPosition();
+
+						Route.getInstance().addPoint(destino);
+						Fragment fragment = null;
+						FragmentManager fragmentManager = getFragmentManager();
+						fragment = new PercursoFragment();
+						fragmentManager.beginTransaction()
+								.replace(R.id.content_frame, fragment).commit();
+						mDialog.dismiss();
+					}
+				});
+
+				mDialog.show(getFragmentManager(), "Alert");
 			}
 		});
 	}

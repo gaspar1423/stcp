@@ -6,4 +6,8 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
 
+    <!-- Popup dimensions -->
+    <dimen name="popupMinWidth">300dp</dimen>
+    <dimen name="popupMaxWidth">500dp</dimen>
+
 </resources>

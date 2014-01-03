@@ -38,4 +38,9 @@ public class LinhasFragment extends AbstractMapFragment {
 			googleMap.addMarker(options);
 		}
 	}
+
+	private void getLinhas() {
+		String path = getString(R.string.linhas_path);
+
+	}
 }

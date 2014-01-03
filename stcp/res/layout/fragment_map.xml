@@ -4,24 +4,23 @@
     android:layout_height="match_parent"
     class="com.google.android.gms.maps.SupportMapFragment"
     tools:context=".MapActivity" >
-    
-	
-	
-	<FrameLayout
+
+    <FrameLayout
         android:id="@+id/framemap"
         android:layout_width="match_parent"
         android:layout_height="match_parent" >
-	 </FrameLayout>
+    </FrameLayout>
 
-		     <Button
-		         android:id="@+id/limparPontos"
-		         android:layout_width="wrap_content"
-		         android:layout_height="wrap_content"
-		         android:layout_alignParentBottom="true"
-		         android:layout_alignParentLeft="true"
-		         android:layout_marginBottom="30dp"
-		         android:layout_marginLeft="10dp"
-		         android:text="@string/limpar"
-		         android:visibility="gone" />
+    <Button
+        android:id="@+id/limparPontos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginBottom="30dp"
+        android:layout_marginLeft="10dp"
+        android:background="@drawable/botaon_popup_selector"
+        android:text="@string/limpar"
+        android:visibility="gone" />
 
 </RelativeLayout>

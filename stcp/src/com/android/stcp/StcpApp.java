@@ -3,6 +3,8 @@ package com.android.stcp;
 import android.app.Application;
 import android.content.Context;
 
+import com.stcp.volley.RequestManager;
+
 public class StcpApp extends Application {
 
 	private static Application app = null;
@@ -10,6 +12,8 @@ public class StcpApp extends Application {
 	public void onCreate() {
 		super.onCreate();
 		setAppContext(this);
+
+		RequestManager.init(this);
 	}
 
 	public static Application getApp() {
