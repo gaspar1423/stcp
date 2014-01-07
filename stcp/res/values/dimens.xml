@@ -10,4 +10,7 @@
     <dimen name="popupMinWidth">300dp</dimen>
     <dimen name="popupMaxWidth">500dp</dimen>
 
+    <!-- Text sizes -->
+    <dimen name="textM">18dp</dimen>
+
 </resources>

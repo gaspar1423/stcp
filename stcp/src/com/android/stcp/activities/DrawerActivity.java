@@ -1,7 +1,5 @@
 package com.android.stcp.activities;
 
-import android.app.SearchManager;
-import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
@@ -17,12 +15,12 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.android.stcp.R;
 import com.android.stcp.fragments.LinhasFragment;
 import com.android.stcp.fragments.MapaFragment;
 import com.android.stcp.fragments.PercursoFragment;
+import com.android.stcp.map.Route;
 
 public class DrawerActivity extends ActionBarActivity {
 	private DrawerLayout mDrawerLayout;
@@ -39,7 +37,7 @@ public class DrawerActivity extends ActionBarActivity {
 		setContentView(R.layout.activity_drawer);
 
 		mTitle = mDrawerTitle = getTitle();
-		mMenuTitles = getResources().getStringArray(R.array.menu);
+		mMenuTitles = getResources().getStringArray(R.array.drawer_list_menu);
 		mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 		mDrawerList = (ListView) findViewById(R.id.left_drawer);
 
@@ -92,14 +90,6 @@ public class DrawerActivity extends ActionBarActivity {
 		MenuInflater inflater = getMenuInflater();
 		inflater.inflate(R.menu.main, menu);
 		return super.onCreateOptionsMenu(menu);
-
-		// getMenuInflater().inflate(R.menu.main, menu);
-		// MenuItem searchItem = menu.findItem(R.id.action_search);
-		// SearchView searchView = (SearchView) MenuItemCompat
-		// .getActionView(searchItem);
-		// // Configure the search info and add any event listeners
-		// return super.onCreateOptionsMenu(menu);
-
 	}
 
 	@Override
@@ -107,7 +97,7 @@ public class DrawerActivity extends ActionBarActivity {
 		// If the nav drawer is open, hide action items related to the content
 		// view
 		boolean drawerOpen = mDrawerLayout.isDrawerOpen(mDrawerList);
-		menu.findItem(R.id.action_search).setVisible(!drawerOpen);
+		menu.findItem(R.id.delete_locations).setVisible(!drawerOpen);
 		return super.onPrepareOptionsMenu(menu);
 	}
 
@@ -120,17 +110,9 @@ public class DrawerActivity extends ActionBarActivity {
 		}
 		// Handle action buttons
 		switch (item.getItemId()) {
-		case R.id.action_search:
-
-			Intent intent = new Intent(Intent.ACTION_WEB_SEARCH);
-			intent.putExtra(SearchManager.QUERY, getActionBar().getTitle());
-			// catch event that there's no activity to handle intent
-			if (intent.resolveActivity(getPackageManager()) != null) {
-				startActivity(intent);
-			} else {
-				Toast.makeText(this, R.string.app_not_available,
-						Toast.LENGTH_LONG).show();
-			}
+		case R.id.delete_locations:
+			Route.getInstance().clearPoints();
+			selectItem(0);
 			return true;
 		default:
 			return super.onOptionsItemSelected(item);

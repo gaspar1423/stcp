@@ -1,13 +1,11 @@
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <!--<item android:id="@+id/action_websearch"
-          android:icon="@drawable/action_search"
-          android:title="@string/action_websearch"
-          android:showAsAction="ifRoom|withText"
-    	  android:background="#fff"/> -->
-    
-    <item android:id="@+id/action_search"
-          android:title="@string/action_search"
-          android:icon="@drawable/action_search"
-          android:showAsAction="ifRoom|collapseActionView"
-          android:actionViewClass="android.support.v7.widget.SearchView" />
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:stcp="http://schemas.android.com/apk/res-auto" >
+
+    <item
+        android:id="@+id/delete_locations"
+        android:icon="@drawable/ic_action_discard"
+        android:orderInCategory="100"
+        android:title="@string/limpar"
+        stcp:showAsAction="always"/>
+
 </menu>

@@ -9,6 +9,7 @@
     <string name="experimentar">Experimentar</string>
     <string name="login_progress_signing_in">Conectando&#8230;</string>
     <string name="limpar">Limpar dados</string>
+    <string name="semLinhasDisponiveis">De momento não existem linhas disponiveis.</string>
 
     <!-- URLs -->
     <string name="server_url"></string>
@@ -16,7 +17,7 @@
     <string name="linhas_path">https://dl.dropboxusercontent.com/u/14038761/stcp/linhas.json</string>
     <string name="error_login_path">https://dl.dropboxusercontent.com/u/14038761/stcp/errorLogin.json</string>
 
-    <string-array name="menu">
+    <string-array name="drawer_list_menu">
         <item name="geral">Vista Geral</item>
         <item name="percurso">Percurso</item>
         <item name="linhas">Linhas</item>

@@ -1,58 +1,58 @@
 package com.android.stcp.modelobjects;
 
-import java.util.ArrayList;
-import java.util.List;
+import android.location.Location;
 
-import com.google.gson.JsonArray;
+import com.google.android.gms.maps.model.LatLng;
 import com.google.gson.JsonNull;
 import com.google.gson.JsonObject;
 
 public class Paragem {
 
-	private int paragem_id;
+	private String paragem_id;
 	private String nome;
+	private boolean activa;
 	private String zona;
-	private boolean status;
 	private float latitude;
 	private float longitude;
-	private List<Linha> listaLinhas;
 
-	public Paragem(int paragem_id, String nome, String zona, boolean status,
-			float latitude, float longitude, List<Linha> listaLinhas) {
+	// private List<int> listaLinhas;
+
+	public Paragem(String paragem_id, String nome, boolean activa, String zona,
+			float latitude, float longitude) {
 		super();
 		this.paragem_id = paragem_id;
 		this.nome = nome;
+		this.activa = activa;
 		this.zona = zona;
-		this.status = status;
 		this.latitude = latitude;
 		this.longitude = longitude;
-		this.listaLinhas = listaLinhas;
+		// this.listaLinhas = listaLinhas;
 	}
 
 	public static Paragem fromJSON(final JsonObject json) {
-		int paragem_id = 0;
+		String paragem_id = "";
 		String nome = "";
+		boolean activa = false;
 		String zona = "";
-		boolean status = false;
 		float latitude = 0;
 		float longitude = 0;
 
 		if (json.get("paragem_id") != null
 				&& json.get("paragem_id") != JsonNull.INSTANCE) {
-			paragem_id = json.get("paragem_id").getAsInt();
+			paragem_id = json.get("paragem_id").getAsString();
 		}
 
 		if (json.get("nome") != null && json.get("nome") != JsonNull.INSTANCE) {
 			nome = json.get("nome").getAsString();
 		}
 
-		if (json.get("zona") != null && json.get("zona") != JsonNull.INSTANCE) {
-			zona = json.get("zona").getAsString();
+		if (json.get("activa") != null
+				&& json.get("activa") != JsonNull.INSTANCE) {
+			activa = json.get("activa").getAsBoolean();
 		}
 
-		if (json.get("status") != null
-				&& json.get("status") != JsonNull.INSTANCE) {
-			status = json.get("status").getAsBoolean();
+		if (json.get("zona") != null && json.get("zona") != JsonNull.INSTANCE) {
+			zona = json.get("zona").getAsString();
 		}
 
 		if (json.get("latitude") != null
@@ -65,25 +65,24 @@ public class Paragem {
 			longitude = json.get("longitude").getAsFloat();
 		}
 
-		List<Linha> lista = new ArrayList<Linha>();
-		JsonArray jarray = json.getAsJsonArray("linhas");
-		if (jarray != null) {
-			for (int i = 0; i < jarray.size(); i++) {
-				Linha linha = Linha.fromJSON(jarray.get(i).getAsJsonObject());
+		// List<int> lista = new ArrayList<int>();
+		// JsonArray jarray = json.getAsJsonArray("linhas");
+		// if (jarray != null) {
+		// for (int i = 0; i < jarray.size(); i++) {
+		// int linha = jarray.get(i).getAsJsonObject();
+		//
+		// lista.add(linha);
+		// }
+		// }
 
-				lista.add(linha);
-			}
-		}
-
-		return new Paragem(paragem_id, nome, zona, status, latitude, longitude,
-				lista);
+		return new Paragem(paragem_id, nome, activa, zona, latitude, longitude);
 	}
 
-	public int getParagem_id() {
+	public String getParagem_id() {
 		return paragem_id;
 	}
 
-	public void setParagem_id(int paragem_id) {
+	public void setParagem_id(String paragem_id) {
 		this.paragem_id = paragem_id;
 	}
 
@@ -103,12 +102,12 @@ public class Paragem {
 		this.zona = zona;
 	}
 
-	public boolean isStatus() {
-		return status;
+	public boolean isActiva() {
+		return activa;
 	}
 
-	public void setStatus(boolean status) {
-		this.status = status;
+	public void set_activa(boolean activa) {
+		this.activa = activa;
 	}
 
 	public float getLatitude() {
@@ -127,12 +126,23 @@ public class Paragem {
 		this.longitude = longitude;
 	}
 
-	public List<Linha> getListaLinhas() {
-		return listaLinhas;
+	public LatLng getLatLngPoint() {
+		return new LatLng(latitude, longitude);
 	}
 
-	public void setListaLinhas(List<Linha> listaLinhas) {
-		this.listaLinhas = listaLinhas;
+	public Location getLocationObject() {
+		Location location = new Location("");
+		location.setLatitude(latitude);
+		location.setLongitude(longitude);
+		return location;
 	}
+	//
+	// public List<int> getListaLinhas() {
+	// return listaLinhas;
+	// }
+	//
+	// public void setListaLinhas(List<int> listaLinhas) {
+	// this.listaLinhas = listaLinhas;
+	// }
 
 }

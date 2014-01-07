@@ -3,42 +3,42 @@ package com.android.stcp.modelobjects;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.android.gms.maps.model.LatLng;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonNull;
 import com.google.gson.JsonObject;
 
 public class Linha {
 
+	private String nome;
 	private String nr_linha;
-	private String nr_zona;
 	private String sentido;
 	private boolean activa;
 	private List<Paragem> listaParagens;
 
-	public Linha(String nr_linha, String nr_zona, String sentido,
-			boolean activa, List<Paragem> listaParagens) {
+	public Linha(String nome, String nr_linha, String sentido, boolean activa,
+			List<Paragem> listaParagens) {
 		super();
+		this.nome = nome;
 		this.nr_linha = nr_linha;
-		this.nr_zona = nr_zona;
 		this.sentido = sentido;
 		this.activa = activa;
 		this.listaParagens = listaParagens;
 	}
 
 	public static Linha fromJSON(final JsonObject json) {
+		String nome = "";
 		String nr_linha = "";
-		String nr_zona = "";
 		String sentido = "";
 		boolean activa = false;
+
+		if (json.get("nome") != null && json.get("nome") != JsonNull.INSTANCE) {
+			nome = json.get("nome").getAsString();
+		}
 
 		if (json.get("nr_linha") != null
 				&& json.get("nr_linha") != JsonNull.INSTANCE) {
 			nr_linha = json.get("nr_linha").getAsString();
-		}
-
-		if (json.get("nr_zona") != null
-				&& json.get("nr_zona") != JsonNull.INSTANCE) {
-			nr_zona = json.get("nr_zona").getAsString();
 		}
 
 		if (json.get("sentido") != null
@@ -62,7 +62,15 @@ public class Linha {
 			}
 		}
 
-		return new Linha(nr_linha, nr_zona, sentido, activa, lista);
+		return new Linha(nome, nr_linha, sentido, activa, lista);
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 
 	public String getNr_linha() {
@@ -71,14 +79,6 @@ public class Linha {
 
 	public void setNr_linha(String nr_linha) {
 		this.nr_linha = nr_linha;
-	}
-
-	public String getNr_zona() {
-		return nr_zona;
-	}
-
-	public void setNr_sentido(String nr_zona) {
-		this.nr_zona = nr_zona;
 	}
 
 	public String getSentido() {
@@ -103,5 +103,14 @@ public class Linha {
 
 	public void setListaParagens(List<Paragem> listaParagens) {
 		this.listaParagens = listaParagens;
+	}
+
+	public List<LatLng> getParagensLocations() {
+		List<LatLng> result = new ArrayList<LatLng>();
+
+		for (Paragem p : listaParagens) {
+			result.add(p.getLatLngPoint());
+		}
+		return result;
 	}
 }

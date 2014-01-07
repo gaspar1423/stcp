@@ -22,7 +22,7 @@
             android:gravity="center"
             android:text="@string/destinationTitle"
             android:textColor="@color/stcp_blue"
-            android:textSize="18dp" />
+            android:textSize="@dimen/textM" />
 
         <LinearLayout
             android:layout_width="match_parent"

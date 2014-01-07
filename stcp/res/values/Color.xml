@@ -6,5 +6,6 @@
     <color name="stcp_blue">#003C87</color>
     <color name="stcp_orange">#E97F01</color>
     <color name="white">#ffffff</color>
+    <color name="black">#000000 </color>
 
 </resources>

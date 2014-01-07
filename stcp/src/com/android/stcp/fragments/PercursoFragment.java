@@ -4,9 +4,6 @@ import java.util.List;
 
 import android.graphics.Color;
 import android.location.Location;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
 
 import com.android.stcp.R;
 import com.android.stcp.map.Route;
@@ -27,23 +24,15 @@ public class PercursoFragment extends AbstractMapFragment implements
 	private Location myLocation;
 	public List<LatLng> stops = Route.getInstance().getListPoints();
 
+	private boolean isFirstTimeZoom = true;
+
 	@Override
 	public void onMapReady() {
 		super.onMapReady();
+		String[] titleList;
 
-		Button bLimpar = (Button) getActivity().findViewById(R.id.limparPontos);
-		bLimpar.setVisibility(View.VISIBLE);
-		bLimpar.setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				Route.getInstance().clearPoints();
-
-				LatLng latLng = new LatLng(myLocation.getLatitude(), myLocation
-						.getLongitude());
-				Route.getInstance().addPoint(latLng);
-			}
-		});
+		titleList = getResources().getStringArray(R.array.drawer_list_menu);
+		getActivity().setTitle(titleList[1]);
 
 		if (stops != null) {
 			for (int i = 0; i < stops.size() - 1; i++) {
@@ -72,19 +61,21 @@ public class PercursoFragment extends AbstractMapFragment implements
 						if (currentLocation != null) {
 							myLocation = currentLocation;
 						}
-						LatLng latLng = new LatLng(myLocation.getLatitude(),
-								myLocation.getLongitude());
 
-						latLngBoundsBuilder.include(latLng);
-						LatLngBounds llb = latLngBoundsBuilder.build();
+						if (isFirstTimeZoom) {
+							LatLng latLng = new LatLng(
+									myLocation.getLatitude(), myLocation
+											.getLongitude());
 
-						CameraUpdate cameraUpdate = CameraUpdateFactory
-								.newLatLngBounds(llb, 100);
+							latLngBoundsBuilder.include(latLng);
+							LatLngBounds llb = latLngBoundsBuilder.build();
 
-						// CameraUpdate cameraUpdate = CameraUpdateFactory
-						// .newLatLngZoom(latLng, 15);
+							CameraUpdate cameraUpdate = CameraUpdateFactory
+									.newLatLngBounds(llb, 100);
 
-						googleMap.animateCamera(cameraUpdate);
+							googleMap.animateCamera(cameraUpdate);
+							isFirstTimeZoom = false;
+						}
 					}
 				});
 	}
