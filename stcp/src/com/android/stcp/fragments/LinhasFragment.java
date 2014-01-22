@@ -1,5 +1,6 @@
 package com.android.stcp.fragments;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import android.os.Bundle;
@@ -18,13 +19,16 @@ import com.android.stcp.StcpApp;
 import com.android.stcp.adapters.LinhasAdapter;
 import com.android.stcp.managers.LinhasManager;
 import com.android.stcp.modelobjects.Linha;
+import com.stcp.volley.RequestManager;
 
 public class LinhasFragment extends Fragment implements OnItemClickListener {
+
+	protected static final String TAG = LinhasFragment.class.getSimpleName();
 
 	private ListView listView;
 	private View spinner;
 	private View noData;
-	public static List<Linha> listLinhas;
+	public List<Linha> listLinhas = new ArrayList<Linha>();
 	private LinhasAdapter mAdapter;
 	private String linha_id = "";
 
@@ -73,6 +77,11 @@ public class LinhasFragment extends Fragment implements OnItemClickListener {
 		getListView().setBackgroundResource(android.R.color.white);
 
 		listLinhas = LinhasManager.getInstance().getListaLinhas();
+
+		if (listLinhas != null && listLinhas.size() > 0) {
+			povoateList(listLinhas);
+		}
+
 	}
 
 	@Override
@@ -86,6 +95,12 @@ public class LinhasFragment extends Fragment implements OnItemClickListener {
 		} else {
 			LinhasManager.getInstance().doRequestLinhas(getActivity());
 		}
+	}
+
+	@Override
+	public void onStop() {
+		super.onStop();
+		RequestManager.cancelPendingRequests(TAG);
 	}
 
 	@Override
@@ -121,5 +136,4 @@ public class LinhasFragment extends Fragment implements OnItemClickListener {
 			showData(false);
 		}
 	}
-
 }

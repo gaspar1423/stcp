@@ -21,6 +21,7 @@ import com.stcp.volley.StcpJsonObjectRequest;
 public class LinhasManager {
 
 	public static final String TAG = LinhasManager.class.getSimpleName();
+
 	public List<Linha> listaLinhas;
 
 	private static final class SingletonHolder {
@@ -37,6 +38,14 @@ public class LinhasManager {
 
 	public List<Linha> getListaLinhas() {
 		return listaLinhas;
+	}
+
+	public void addLinha(Linha linha) {
+		this.listaLinhas.add(linha);
+	}
+
+	public void clearLinhas() {
+		this.listaLinhas.clear();
 	}
 
 	public void setListaLinhas(List<Linha> listaLinhas) {
@@ -89,6 +98,9 @@ public class LinhasManager {
 	}
 
 	public void parseJsonResponse(JsonObject response) {
+
+		this.listaLinhas.clear();
+
 		if (response != null && response.has("linhas")) {
 			Log.i(TAG, "[LinhasManager] as reponse");
 			try {
@@ -101,14 +113,14 @@ public class LinhasManager {
 								.getAsJsonObject();
 
 						Linha linha = Linha.fromJSON(linhaJsonObject);
-						this.listaLinhas.add(linha);
+						listaLinhas.add(linha);
 						Log.i(TAG, "[LinhasManager] linha added");
 					}
+					this.setListaLinhas(listaLinhas);
 				}
 			} catch (Exception e) {
 				Log.e("Parse delivery exception" + e, null);
 			}
 		}
-
 	}
 }

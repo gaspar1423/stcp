@@ -8,6 +8,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -20,6 +21,7 @@ import com.android.stcp.R;
 import com.android.stcp.fragments.LinhasFragment;
 import com.android.stcp.fragments.MapaFragment;
 import com.android.stcp.fragments.PercursoFragment;
+import com.android.stcp.managers.LinhasManager;
 import com.android.stcp.map.Route;
 
 public class DrawerActivity extends ActionBarActivity {
@@ -83,6 +85,8 @@ public class DrawerActivity extends ActionBarActivity {
 		if (savedInstanceState == null) {
 			selectItem(0);
 		}
+
+		LinhasManager.getInstance().doRequestLinhas(this);
 	}
 
 	@Override
@@ -181,5 +185,14 @@ public class DrawerActivity extends ActionBarActivity {
 		super.onConfigurationChanged(newConfig);
 		// Pass any configuration change to the drawer toggls
 		mDrawerToggle.onConfigurationChanged(newConfig);
+	}
+
+	@Override
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+		if (keyCode == KeyEvent.KEYCODE_BACK) {
+			moveTaskToBack(true);
+			return true;
+		}
+		return super.onKeyDown(keyCode, event);
 	}
 }

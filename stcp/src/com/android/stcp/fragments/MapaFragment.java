@@ -65,7 +65,6 @@ public class MapaFragment extends AbstractMapFragment {
 							LatLng latLng = new LatLng(
 									myLocation.getLatitude(), myLocation
 											.getLongitude());
-							Route.getInstance().addPoint(latLng);
 
 							CameraUpdate cameraUpdate = CameraUpdateFactory
 									.newLatLngZoom(latLng, 15);
@@ -115,11 +114,16 @@ public class MapaFragment extends AbstractMapFragment {
 						LatLng origem = marker.getPosition();
 
 						Route.getInstance().addPoint(origem);
+						LatLng latLng = new LatLng(myLocation.getLatitude(),
+								myLocation.getLongitude());
+						Route.getInstance().addPoint(latLng);
+
 						Fragment fragment = null;
 						FragmentManager fragmentManager = getFragmentManager();
 						fragment = new PercursoFragment();
 						fragmentManager.beginTransaction()
 								.replace(R.id.content_frame, fragment).commit();
+
 						mDialog.dismiss();
 					}
 
@@ -129,12 +133,17 @@ public class MapaFragment extends AbstractMapFragment {
 					public void onClick(View v) {
 						LatLng destino = marker.getPosition();
 
+						LatLng latLng = new LatLng(myLocation.getLatitude(),
+								myLocation.getLongitude());
+						Route.getInstance().addPoint(latLng);
 						Route.getInstance().addPoint(destino);
+
 						Fragment fragment = null;
 						FragmentManager fragmentManager = getFragmentManager();
 						fragment = new PercursoFragment();
 						fragmentManager.beginTransaction()
 								.replace(R.id.content_frame, fragment).commit();
+
 						mDialog.dismiss();
 					}
 				});

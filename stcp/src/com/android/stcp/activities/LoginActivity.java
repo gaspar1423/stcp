@@ -94,13 +94,13 @@ public class LoginActivity extends ActionBarActivity {
 		password = passEditText.getText().toString();
 
 		if (password.equals("")) {
-			passEditText.setError("Parametro vazio");
+			passEditText.setError("Par‰metro vazio");
 			focusView = passEditText;
 			cancel = true;
 		}
 
 		if (username.equals("")) {
-			userEditText.setError("Parametro vazio");
+			userEditText.setError("Par‰metro vazio");
 			focusView = userEditText;
 			cancel = true;
 		}

@@ -105,18 +105,8 @@ public class PercursoFragment extends AbstractMapFragment implements
 	public void insertMarkers(List<LatLng> stops) {
 
 		MarkerOptions options = new MarkerOptions();
-		options.position(stops.get(0));
-		options.icon(BitmapDescriptorFactory
-				.fromResource(R.drawable.marker_paragem));
-		googleMap.addMarker(options);
 
-		options = new MarkerOptions();
-		options.position(stops.get(stops.size() - 1));
-		options.icon(BitmapDescriptorFactory
-				.fromResource(R.drawable.marker_paragem));
-		googleMap.addMarker(options);
-
-		for (int i = 1; i < stops.size() - 1; i++) {
+		for (int i = 0; i < stops.size(); i++) {
 			options = new MarkerOptions();
 			options.position(stops.get(i));
 			options.icon(BitmapDescriptorFactory

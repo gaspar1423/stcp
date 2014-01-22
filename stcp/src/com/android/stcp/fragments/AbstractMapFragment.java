@@ -18,6 +18,7 @@ public abstract class AbstractMapFragment extends Fragment implements
 		OnMapReadyListener {
 
 	public static final String TAG = AbstractMapFragment.class.getSimpleName();
+
 	protected LatLngBounds.Builder latLngBoundsBuilder = new LatLngBounds.Builder();
 	protected LatLng coord = null;
 	protected CustomMapFragment mapFragment = null;
